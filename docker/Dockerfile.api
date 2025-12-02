@@ -1,0 +1,32 @@
+# ------------------------
+# 1) Base image
+# ------------------------
+FROM python:3.10-slim
+
+# ------------------------
+# 2) Working directory
+# ------------------------
+WORKDIR /app
+
+# ------------------------
+# 3) Install requirements
+# ------------------------
+COPY ./requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
+
+# ------------------------
+# 4) Copy project files
+# ------------------------
+COPY ./src /app/src
+COPY ./models /app/models
+COPY ./data/processed /app/data/processed
+
+# ------------------------
+# 5) Expose port
+# ------------------------
+EXPOSE 8000
+
+# ------------------------
+# 6) Run API
+# ------------------------
+CMD ["uvicorn", "src.api.app:app", "--host", "0.0.0.0", "--port", "8000"]

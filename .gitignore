@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+
+# Data
+data/raw/
+data/processed/*.csv
+data/daily_logs/*.csv
+data/predictions/*.csv
+
+# MLflow
+mlruns/
+
+# IDE
+.vscode/
+.idea/
+
+# Env
+.env
+.venv/
+*.log
+
+# Models
+models/*.pkl
